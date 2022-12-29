@@ -35,7 +35,7 @@ const Homepage = () => {
         </Col>
       </Row>
       <div className='home-heading-container'>
-        <Title level={2} className='home-title'>Top Coins In The Market Place rn</Title>
+        <Title level={2} className='home-title'>Top Coins In The Market Place</Title>
         <Title level={3} className='hshow-more'>
           <Link to='/cryptocurrencies'>see all</Link>
         </Title>
