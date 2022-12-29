@@ -11,9 +11,9 @@ export const store =  configureStore({
 
     },
     middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(cryptoApi.middleware),
-    middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(cryptoNewsApi.middleware),
+    getDefaultMiddleware().concat(cryptoApi.middleware, cryptoNewsApi.middleware),
+    // middleware: (getDefaultMiddleware) =>
+    // getDefaultMiddleware().concat(cryptoNewsApi.middleware),
 
 
 });
