@@ -17,15 +17,14 @@ const CryptoDetails = () => {
   // const { data: coinHistory } = useGetCryptoHistoryQuery({ coinId, timeperiod });
   const cryptoDetails = data?.data?.coin;
 
-  // console.log(data);
+  console.log(data);
 
   const time = ['3h', '24h', '7d', '30d', '1y', '3m', '3y', '5y'];
 
   const stats = [
     { title: 'Price to USD', value: `$ ${cryptoDetails?.price && millify(cryptoDetails?.price)}`, icon: <DollarCircleOutlined /> },
     { title: 'Rank', value: cryptoDetails?.rank, icon: <NumberOutlined /> },
-    { title: '24h Volume', value: `$ ${cryptoDetails?.volume && millify(cryptoDetails?.volume)}`, icon: <ThunderboltOutlined /> },
-    { title: 'Market Cap', value: `$ ${cryptoDetails?.marketCap && millify(cryptoDetails?.marketCap)}`, icon: <DollarCircleOutlined /> },
+    { title: '24h Volume', value: `$ ${cryptoDetails?.volume && millify(cryptoDetails?.volume)}`, icon: <ThunderboltOutlined /> },    { title: 'Market Cap', value: `$ ${cryptoDetails?.marketCap && millify(cryptoDetails?.marketCap)}`, icon: <DollarCircleOutlined /> },
     { title: 'All-time-high(daily avg.)', value: `$ ${cryptoDetails?.allTimeHigh?.price && millify(cryptoDetails?.allTimeHigh?.price)}`, icon: <TrophyOutlined /> },
   ];
 
@@ -42,10 +41,10 @@ const CryptoDetails = () => {
     <Col className='coin-detail-container'>
       <Col className='coin-heading-container'>
         <Title level={2} className='coin-name'>
-          {cryptoDetails?.name} ({cryptoDetails?.slug}) Price
+          {cryptoDetails?.name}  Price
         </Title>
         <p>
-          {cryptoDetails?.name} price in $. 
+          {cryptoDetails?.name} price in Us Dollars. 
           View stats, exchanges and other information
         </p>
       </Col>
@@ -77,7 +76,49 @@ const CryptoDetails = () => {
             </Col>
           ))} 
         </Col>
+
+        <Col className='other-stats-info'>
+          <Col className='coin-value-statistics-heading'>
+            <Title level={3} className='coin-details-heading'>
+              General Stats
+            </Title>
+            <p>Overview of the stats of all current cryptocurrencies</p>
+          </Col>
+          {genericStats.map(({ icon, title, value }) => (
+            <Col className="coin-stats">
+              <Col className="coin-stats-name">
+                <Text>{icon}</Text>
+                <Text>{title}</Text>
+              </Col>
+              <Text className="stats">{value}</Text>
+            </Col>
+          ))} 
+        </Col>
       </Col>
+
+      <Col className='coin-descilink'>
+        <Row className='coin-desc'>
+          <Title level={3} className='coin-details-heading'>
+            Overview of {cryptoDetails.name}
+            {HTMLReactParser(cryptoDetails.description)}
+          </Title>
+        </Row>
+        <Col className='coin-links'>
+          <Title className='coin-details-heading' level={3}>
+            {cryptoDetails.name} Related webs
+          </Title>
+          {cryptoDetails.links.map((link) => (
+            <Row className='coin-link' key={link.name}>
+              <Title level={5} className='link-name'>
+                {link.type}
+              </Title>
+              <a href={link.url} target="_blank" rel="noreferrer">{link.name}</a>
+            </Row>
+          ))}
+        </Col>
+      </Col>
+
+
     </Col>
   )
 
