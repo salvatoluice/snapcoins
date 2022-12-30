@@ -31,6 +31,7 @@ function App() {
         <div className='footer'>
           <Typography.Title level={5} style={{ color: 'white', textAlign: 'center' }}>
               SnapCoins <br />
+              &copy;Salvato Luis 2022 <br />
               All Rights Reserved
           </Typography.Title>
           <Space>
