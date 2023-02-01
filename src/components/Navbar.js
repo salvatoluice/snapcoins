@@ -51,6 +51,9 @@ const Navbar = () => {
         <Menu.Item icon={<BulbOutlined />}>
           <Link to='/news'>News</Link>
         </Menu.Item>
+        <Menu.Item>
+          <a href="https://snapcoins-tracker.vercel.app/">Tracker</a>
+        </Menu.Item>
       </Menu>
       )}
     </div>
